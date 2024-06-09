@@ -1,10 +1,14 @@
 from prometheus_eval import PrometheusEval
 from prometheus_eval.prompts import RELATIVE_PROMPT
+from prometheus_eval.vllm import VLLM
 
-judge = PrometheusEval(
-    model_id="prometheus-eval/prometheus-7b-v2.0",
-    relative_grade_template=RELATIVE_PROMPT,
-)
+model = VLLM(model="prometheus-eval/prometheus-7b-v2.0")
+judge = PrometheusEval(model=model, absolute_grade_template=RELATIVE_PROMPT)
+
+# judge = PrometheusEval(
+#     model_id="prometheus-eval/prometheus-7b-v2.0",
+#     relative_grade_template=RELATIVE_PROMPT,
+# )
 
 
 data = {

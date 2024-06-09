@@ -1,10 +1,9 @@
 from prometheus_eval import PrometheusEval
 from prometheus_eval.prompts import ABSOLUTE_PROMPT, SCORE_RUBRIC_TEMPLATE
+from prometheus_eval.vllm import VLLM
 
-judge = PrometheusEval(
-    model_id="prometheus-eval/prometheus-7b-v2.0",
-    absolute_grade_template=ABSOLUTE_PROMPT,
-)
+model = VLLM(model="prometheus-eval/prometheus-7b-v2.0")
+judge = PrometheusEval(model=model, absolute_grade_template=ABSOLUTE_PROMPT)
 
 instruction = (
     "Struggling with a recent break-up, a person opens up about the intense feelings of loneliness and sadness. They ask for advice on how to cope with the heartbreak and move forward in life.",
